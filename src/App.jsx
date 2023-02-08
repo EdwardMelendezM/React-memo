@@ -3,7 +3,8 @@ import Contador from "./components/Contador";
 function App() {
   return (
     <div>
-      <h1>Uso de memo</h1>
+      <h2>Teoria</h2>
+      <h3>Uso de memo</h3>
       <ul>
         <li>Se encarga de memorizar un componente</li>
         <li>Lo vuelve a memorizar al momento de que sus props cambian</li>
@@ -21,7 +22,19 @@ function App() {
         </ul>
       </ul>
       <hr />
-      <h2>Teoria</h2>
+      <h3>useCallback</h3>
+      <ul>
+        <li>
+          Memoriza una funcion, para que no vuelva a definir en cada render
+        </li>
+        <li>
+          Usalo siempre que se pase una funcion como prop a un componente
+          memorizado
+        </li>
+        <li>
+          Usalo siempre que se pase una funcion como parametro de un efecto
+        </li>
+      </ul>
       <hr />
       <Contador />
       <h3></h3>

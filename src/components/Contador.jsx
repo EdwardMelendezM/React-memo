@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import ContadorHijo from "./ContadorHijo";
 
 const Contador = () => {
   const [contador, setContador] = useState(0);
-  const suma = () => setContador(contador + 1);
-  const resta = () => setContador(contador - 1);
+  const [input, setInput] = useState("");
+
+  //const suma = () => setContador(contador + 1);
+  const suma = useCallback(() => setContador(contador + 1), [contador]);
+  const resta = useCallback(() => setContador(contador - 1), [contador]);
+  //const resta = () => setContador(contador - 1);
+  const handleInput = (e) => setInput(e.target.value);
+
   return (
     <div style={{ textAlign: "center" }}>
       <h3>Contador</h3>
@@ -13,7 +19,8 @@ const Contador = () => {
         <button onClick={resta}>-</button>
       </nav>
       <h3>{contador}</h3>
-      <ContadorHijo />
+      <input type="text" onChange={handleInput} value={input} />
+      <ContadorHijo contador={contador} suma={suma} resta={resta} />
     </div>
   );
 };
